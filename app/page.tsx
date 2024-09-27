@@ -34,6 +34,26 @@ export default function Home() {
     }
   };
 
+  const scanCode = async () => {
+    const result = await liff.scanCodeV2();
+    // result.value.userId = 'U41f97bf219a08c644dfcb04486258725';
+    let datashow = result.value;
+    console.log(datashow);
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener('readystatechange', function () {
+      if (this.readyState === 4) {
+        console.log(this.responseText);
+      }
+    });
+
+    xhr.open('POST', 'https://express-line.vercel.app/dataQR');
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.send(datashow);
+  };
+
   return (
     <section className="bg-gray-900 text-white">
       <div>
@@ -58,6 +78,8 @@ export default function Home() {
             <button type="button" onClick={() => router.push('/dashboard')}>
               Dashboard
             </button>
+          <button onClick={scanCode}>Login with LINE</button>
+
           </>
         ) : (
           <button onClick={handleLogin}>Login with LINE</button>

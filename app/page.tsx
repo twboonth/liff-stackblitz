@@ -77,19 +77,28 @@ export default function Home() {
                 <button onClick={sendMessage}>Send Message</button>
               </div>
             )}
+            {/* Base */}
 
-            <button type="button" onClick={() => router.push('/dashboard')}>
-              Dashboard
+
+            {/* Border */}
+
+            <button
+              className="inline-block rounded border border-indigo-600 px-12 py-3 text-sm font-medium text-indigo-600 hover:bg-indigo-600 hover:text-white focus:outline-none focus:ring active:bg-indigo-500"
+              onClick={() => router.push('/dashboard')}
+            >
+              Download
             </button>
-          <button onClick={scanCode}>scanCode</button>
-          -------------------\\//--------------
-{JSON.stringify(scan)}
+           
+            <button onClick={scanCode} className="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+              >scanCode</button><br />
+            -------------------\\//--------------
+            {JSON.stringify(scan)}
           </>
         ) : (
           <button onClick={handleLogin}>Login with LINE</button>
         )}
       </div>
-      
+
     </section>
     // <div>
     //   <h1>LIFF App</h1>

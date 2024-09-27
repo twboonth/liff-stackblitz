@@ -7,6 +7,8 @@ export default function Home() {
   const router = useRouter();
   const { liff, liffError, isLoggedIn, profile } = useLiff();
   const [message, setMessage] = useState<string>('');
+  const [scan, setScan] = useState<any>();
+
 
   if (liffError) return <p>Something went wrong: {liffError}</p>;
   if (!liff) return <p>Loading...</p>;
@@ -38,6 +40,7 @@ export default function Home() {
     const result = await liff.scanCodeV2();
     // result.value.userId = 'U41f97bf219a08c644dfcb04486258725';
     let datashow = result.value;
+    setScan(result.value);
     console.log(datashow);
     var xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
@@ -78,14 +81,15 @@ export default function Home() {
             <button type="button" onClick={() => router.push('/dashboard')}>
               Dashboard
             </button>
-          <button onClick={scanCode}>Login with LINE</button>
-
+          <button onClick={scanCode}>scanCode</button>
+          -------------------\\//--------------
+{JSON.stringify(scan)}
           </>
         ) : (
           <button onClick={handleLogin}>Login with LINE</button>
         )}
       </div>
-      );
+      
     </section>
     // <div>
     //   <h1>LIFF App</h1>

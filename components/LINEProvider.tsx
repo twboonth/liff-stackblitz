@@ -81,7 +81,9 @@ export function LiffProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const initLiff = async () => {
       try {
-        await liff.init({ liffId: '2006378265-BDywaPL9' });
+        // await liff.init({ liffId: '2006378265-BDywaPL9' });
+        await liff.init({ liffId: '2006372499-80lM51Ay' });
+
         setLiffObject(liff);
 
         if (liff.isLoggedIn()) {
